@@ -60,3 +60,19 @@ int dequeue(Queue* queue, User* user)// Function to remove a user from the front
 
     return 0;
 }
+void makeRandomUsername(char username[])//Function to generate a random username consisting of 10 characters (letters and digits) 
+{
+
+	char letters[] =
+		"abcdefghijklmnopqrstuvwxyz0123456789";// Array of characters to choose from for the username
+
+	for (int i = 0; i < 10; i++)// Loop to generate each character of the username
+	{
+
+		int index = rand() % strlen(letters);// Generate a random index to select a character from the letters array
+
+		username[i] = letters[index];// Assign the randomly selected character to the current position in the username array
+	}
+
+	username[10] = '\0';// Null-terminate the username string
+}
