@@ -1,36 +1,39 @@
 #include "queue.h"
 #include <stdlib.h>
+#include <time.h>
+#include <string.h>
+#include <stdio.h>
 
 void initializeQueue(Queue* queue)// Function to initialize the queue by setting head and tail to NULL
 {
-	queue->head = NULL;// Set the head of the queue to NULL
-	queue->tail = NULL;// Set the tail of the queue to NULL
+	queue->head = NULL;// Sets the head of the queue to NULL
+	queue->tail = NULL;// Sets the tail of the queue to NULL
 }
 int isEmpty(Queue* queue) // Function to check if the queue is empty
 {
-	return queue->head == NULL;// Return 1 (true) if the head of the queue is NULL, indicating that the queue is empty
+	return queue->head == NULL;// Returns 1 (true) if the head of the queue is NULL, indicating that the queue is empty
 }
 int enqueue(Queue* queue, User user) // Function to add a user to the end of the queue
 {
 
-	QueueNode* newNode = malloc(sizeof(QueueNode));// Allocate memory for a new node in the queue
+	QueueNode* newNode = malloc(sizeof(QueueNode));// Allocates memory for a new node in the queue
 
-	if (newNode == NULL)//Check if memory allocation failed 
+	if (newNode == NULL)//Checks if memory allocation failed 
     {
-		return 1;// Return 1 to indicate an error if memory allocation fails
+		return 1;// Returns 1 to indicate an error if memory allocation fails
     }
 
-	newNode->user = user;// Set the user information in the new node
-	newNode->next = NULL;// Set the next pointer of the new node to NULL, as it will be the last node in the queue
+	newNode->user = user;// Sets the user information in the new node
+	newNode->next = NULL;// Sets the next pointer of the new node to NULL, as it will be the last node in the queue
 
-	if (isEmpty(queue))//Check if the queue is empty 
+	if (isEmpty(queue))//Checks if the queue is empty 
     {
-		queue->head = newNode;// If the queue is empty, set both head and tail to the new node
-		queue->tail = newNode;// Set the tail of the queue to the new node
+		queue->head = newNode;// If the queue is empty, sets both head and tail to the new node
+		queue->tail = newNode;// Sets the tail of the queue to the new node
     }
     else 
 	{
-		queue->tail->next = newNode;// If the queue is not empty, link the current tail to the new node and update the tail pointer
+		queue->tail->next = newNode;// If the queue is not empty, links the current tail to the new node and updates		 the tail pointer
 		queue->tail = newNode;// Update the tail of the queue to the new node
     }
 
@@ -83,20 +86,20 @@ User makeRandomUser()// Function to generate a random user with a random usernam
 
 	makeRandomUsername(user.username);// Generate a random username for the user
 
-	user.level = (rand() % 60) + 1;// Generate a random level for the user between 1 and 60
+	user.level = (rand() % 60) + 1;// Generates a random level for the user between 1 and 60
 
-	int choice = rand() % 3;// Generate a random choice to determine the faction of the user (0 for red, 1 for blue, 2 for green)
+	int choice = rand() % 3;// Generates a random choice to determine the faction of the user (0 for red, 1 for blue, 2 for green)
 
 	if (choice == 0)// If the choice is 0, assign the faction "red" to the user
-		strcpy(user.faction, "red");// If the choice is 1, assign the faction "blue" to the user
+		strcpy_s(user.faction, sizeof(user.faction), "red"); // If the choice is 1, assign the faction "blue" to the user
 	else if (choice == 1)// If the choice is 1, assign the faction "blue" to the user
-		strcpy(user.faction, "blue");// If the choice is 2, assign the faction "green" to the user
+		strcpy_s(user.faction, sizeof(user.faction), "blue");// If the choice is 2, assign the faction "green" to the user
 		else
-		strcpy(user.faction, "green");// If the choice is 2, assign the faction "green" to the user
+		strcpy_s(user.faction,sizeof(user.faction), "green");// If the choice is 2, assign the faction "green" to the user
 
-	return user;// Return the generated user
+	return user;// Returns the generated user
 	}
-int addRandomUsers(Queue* queue, int amount)// Function to add a specified number of random users to the queue
+int addRandomUsers(Queue* queue, int amount)// Functions to add a specified number of random users to the queue
 {
 
 	for (int i = 0; i < amount; i++)// Loop to generate and enqueue the specified number of random users
@@ -112,4 +115,3 @@ int addRandomUsers(Queue* queue, int amount)// Function to add a specified numbe
 
 	return 0;
 }
-
