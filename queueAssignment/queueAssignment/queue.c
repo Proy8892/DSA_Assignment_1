@@ -76,3 +76,24 @@ void makeRandomUsername(char username[])//Function to generate a random username
 
 	username[10] = '\0';// Null-terminate the username string
 }
+User makeRandomUser()// Function to generate a random user with a random username, level, and faction
+	{
+
+	User user;// Declare a User variable to hold the generated user information
+
+	makeRandomUsername(user.username);// Generate a random username for the user
+
+	user.level = (rand() % 60) + 1;// Generate a random level for the user between 1 and 60
+
+	int choice = rand() % 3;// Generate a random choice to determine the faction of the user (0 for red, 1 for blue, 2 for green)
+
+	if (choice == 0)// If the choice is 0, assign the faction "red" to the user
+		strcpy(user.faction, "red");// If the choice is 1, assign the faction "blue" to the user
+	else if (choice == 1)// If the choice is 1, assign the faction "blue" to the user
+		strcpy(user.faction, "blue");// If the choice is 2, assign the faction "green" to the user
+		else
+		strcpy(user.faction, "green");// If the choice is 2, assign the faction "green" to the user
+
+	return user;// Return the generated user
+	}
+

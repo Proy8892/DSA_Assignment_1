@@ -26,4 +26,5 @@ int isEmpty(Queue* queue);// Function prototype for checking if the queue is emp
 int enqueue(Queue* queue, User user);// Function prototype for adding a user to the queue
 int dequeue(Queue* queue, User* user);// Function prototype for removing a user from the queue
 void makeRandomUsername(char username[]);// Function prototype for generating a random username
+User makeRandomUser();// Function prototype for generating a random user
 #endif
