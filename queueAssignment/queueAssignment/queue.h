@@ -22,5 +22,6 @@ typedef struct // Queue structure containing pointers to the head and tail of th
 	QueueNode* tail;// Pointer to the tail of the queue
 } Queue;
 void initializeQueue(Queue* queue);// Function prototype for initializing the queue
+int isEmpty(Queue* queue);
 
 #endif
