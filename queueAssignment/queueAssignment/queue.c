@@ -96,4 +96,20 @@ User makeRandomUser()// Function to generate a random user with a random usernam
 
 	return user;// Return the generated user
 	}
+int addRandomUsers(Queue* queue, int amount)// Function to add a specified number of random users to the queue
+{
+
+	for (int i = 0; i < amount; i++)// Loop to generate and enqueue the specified number of random users
+	{
+
+		User user = makeRandomUser();// Generate a random user
+
+		if (enqueue(queue, user) != 0)// Enqueue the generated user and check if the operation was successful
+		{
+			return 1;// Return 1 to indicate an error if enqueueing the user fails
+		}
+	}
+
+	return 0;
+}
 

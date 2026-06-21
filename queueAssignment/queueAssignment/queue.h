@@ -27,4 +27,5 @@ int enqueue(Queue* queue, User user);// Function prototype for adding a user to 
 int dequeue(Queue* queue, User* user);// Function prototype for removing a user from the queue
 void makeRandomUsername(char username[]);// Function prototype for generating a random username
 User makeRandomUser();// Function prototype for generating a random user
+int addRandomUsers(Queue* queue, int amount);// Function prototype for adding a specified number of random users to the queue
 #endif
