@@ -24,5 +24,5 @@ typedef struct // Queue structure containing pointers to the head and tail of th
 void initializeQueue(Queue* queue);// Function prototype for initializing the queue
 int isEmpty(Queue* queue);// Function prototype for checking if the queue is empty	
 int enqueue(Queue* queue, User user);// Function prototype for adding a user to the queue
-
+int dequeue(Queue* queue, User* user);// Function prototype for removing a user from the queue
 #endif
